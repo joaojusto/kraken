@@ -5,10 +5,16 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}}
+  {{> getPullRequests}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="getPullRequests">
+  <form>
+    <input type="text" id="org" placeholder="Organization"><br>
+    <input type="text" id="repo" placeholder="repository"><br>
+    <button action="submit">Search</button>
+  </form>
+  {{# each pullRequests}}
+    <p>{{title}}</p>
+  {{/ each}}
 </template>
