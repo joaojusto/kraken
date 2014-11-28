@@ -10,9 +10,8 @@ if (Meteor.isClient) {
         if (error)
           console.log(error);
         else
-          console.log(result);
+          Meteor.call('clear');
           result.result.forEach(function(pr){
-            console.log(pr.title);
             Meteor.call('addPRs', pr.title);
           });
       });
@@ -22,7 +21,6 @@ if (Meteor.isClient) {
   Template.getPullRequests.helpers({
     pullRequests: function () {
       var prs = PullRequests.find().fetch();
-      console.log(prs.title);
       return prs;
     }
   });
@@ -31,6 +29,10 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     Meteor.methods({
+      'clear': function clear() {
+        PullRequests.remove({});
+      },
+
       'addPRs': function addPRs (title) {
         PullRequests.insert({
           title: title
