@@ -12,14 +12,21 @@ Router.onBeforeAction beforeHooks.isLoggedIn,
 
 Router.map ->
 
-  @route 'home',
+  @route 'root',
     path: '/'
+    action: ->
+      Router.go 'home'
+
+  @route 'home',
+    path: '/home'
 
   @route 'sign_in',
     path: 'sign_in'
+    template: 'sign_in'
 
   @route 'sign_out',
     path: 'sign_out'
+    template: 'sign_out'
     action: ->
       Meteor.logout()
-      Router.go '/sign_in'
+      Router.go 'sign_in'

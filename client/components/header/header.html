@@ -1,6 +1,11 @@
 <template name="header">
   <div class="header">
-    {{> loginButtons}}
+    <div class="user">
+      {{#if user}}
+        <img src={{profilePicture}}>
+      {{/if}}
+      {{> loginButtons}}
+    </div>
     <h1>Kraken</h1>
   </div>
 </template>
