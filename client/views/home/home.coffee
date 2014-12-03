@@ -1,4 +1,4 @@
-Template.index.events
+Template.home.events
   'submit': (event) ->
     event.preventDefault()
 
@@ -11,6 +11,6 @@ Template.index.events
         response.result.forEach (pullRequest) ->
           Meteor.call 'addPullRequest', pullRequest.title
 
-Template.index.helpers
+Template.home.helpers
   pullRequests: ->
     PullRequests.find().fetch()

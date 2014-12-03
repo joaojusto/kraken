@@ -16,4 +16,5 @@ accounts-password
 accounts-ui
 iron:router
 accounts-github
+fourseven:scss
 

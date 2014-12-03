@@ -10,12 +10,16 @@ beforeHooks =
 Router.onBeforeAction beforeHooks.isLoggedIn,
   except: ['sign_in', 'sign_out']
 
-Router.route '/home', ->
-  this.render 'index'
+Router.map ->
 
-Router.route '/sign_in', ->
-  this.render 'sign_in'
+  @route 'home',
+    path: '/'
 
-Router.route '/sign_out', ->
-  Meteor.logout()
-  Router.go '/sign_in'
+  @route 'sign_in',
+    path: 'sign_in'
+
+  @route 'sign_out',
+    path: 'sign_out'
+    action: ->
+      Meteor.logout()
+      Router.go '/sign_in'
