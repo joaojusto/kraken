@@ -1,3 +1,6 @@
+Router.configure
+  layoutTemplate: 'layout'
+
 beforeHooks =
   isLoggedIn: ->
     if !Meteor.userId()

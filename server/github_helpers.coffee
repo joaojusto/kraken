@@ -3,11 +3,11 @@ GitHubAPI = Meteor.npmRequire('github')
 github = new GitHubAPI
   debug: true,
   timeout: 5000,
-  version: "3.0.0",
-  protocol: "https",
-  pathPrefix: "/api/v3",
+  version: '3.0.0',
+  protocol: 'https',
+  pathPrefix: '/api/v3',
   headers:
-    "user-agent": "Kraken"
+    'user-agent': 'Kraken'
 
 Meteor.methods
   'getOpenPullRequests': (organization, repository) ->
