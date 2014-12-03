@@ -13,4 +13,7 @@ meteorhacks:npm
 
 npm-container
 accounts-password
+accounts-ui
+iron:router
+accounts-github
 
