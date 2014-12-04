@@ -1,7 +1,7 @@
 <template name="header">
   <div class="header">
     <div class="user">
-      {{#if user}}
+      {{#if currentUser}}
         <img src={{profilePicture}}>
       {{/if}}
       {{> loginButtons}}

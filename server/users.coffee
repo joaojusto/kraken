@@ -1,5 +1,4 @@
 Accounts.onCreateUser (options, user) ->
-  console.log 'new user callback'
   accessToken = user.services.github.accessToken
 
   result = Meteor.http.get 'https://api.github.com/user',
