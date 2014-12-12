@@ -18,3 +18,17 @@ Meteor.methods
       , (error, response) ->
         done(null, response)
     return pullRequests
+
+  'getUserProfile': ->
+    accessToken = Meteor.user().services.github.accessToken
+
+    result = Meteor.http.get 'https://api.github.com/user',
+      headers:
+        'user-agent': 'Kraken'
+      params:
+        access_token: accessToken
+
+    if result.error
+      throw result.error
+    else
+      result.data

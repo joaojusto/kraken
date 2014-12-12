@@ -1,16 +1,6 @@
 Accounts.onCreateUser (options, user) ->
-  accessToken = user.services.github.accessToken
-
-  result = Meteor.http.get 'https://api.github.com/user',
-    headers:
-      'user-agent': 'Kraken'
-    params:
-      access_token: accessToken
-
-  if result.error
-    throw result.error
-
-  console.log result.data
+  result = Meteor.call('getUserProfile')
+  console.log result
   user.profile = _.pick result.data,
     'login',
     'name',
