@@ -9,6 +9,9 @@ github = new GitHubAPI
   headers:
     'user-agent': 'Kraken'
 
+githubAccessToken = ->
+  Meteor.user().services.github.accessToken
+
 Meteor.methods
   'getOpenPullRequests': (organization, repository) ->
     pullRequests = Async.runSync (done) ->
@@ -20,7 +23,7 @@ Meteor.methods
     return pullRequests
 
   'getUserProfile': ->
-    accessToken = Meteor.user().services.github.accessToken
+    accessToken = githubAccessToken()
 
     result = Meteor.http.get 'https://api.github.com/user',
       headers:
@@ -31,4 +34,19 @@ Meteor.methods
     if result.error
       throw result.error
     else
+      result.data
+
+  'getUserRepositories': ->
+    accessToken = githubAccessToken()
+
+    result = Meteor.http.get 'https://api.github.com/users/' + Meteor.user().profile.login + '/repos',
+      headers:
+        'user-agent': 'Kraken'
+      params:
+        access_token: accessToken
+
+    if result.error
+      throw result.error
+    else
+      console.log result.data
       result.data

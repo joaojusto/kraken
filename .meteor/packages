@@ -17,5 +17,3 @@ accounts-ui
 iron:router
 accounts-github
 fourseven:scss
-revolutionlabs:user-login-state
-
